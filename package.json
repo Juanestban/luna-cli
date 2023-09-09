@@ -1,7 +1,7 @@
 {
-  "name": "luna-cli",
+  "name": "lun-cli",
   "version": "0.1.0",
-  "description": "",
+  "description": "generator react component using cli",
   "main": "dist/index.mjs",
   "bin": {
     "luna-cli": "bin/luna.js"
@@ -12,13 +12,17 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": {
+    "name": "Juanestban"
+  },
+  "repository": "https://github.com/Juanestban/luna-cli",
   "license": "ISC",
   "dependencies": {
     "cac": "6.7.14",
     "minimist": "1.2.8",
     "picocolors": "1.0.0"
   },
+  "bugs": "https://github.com/Juanestban/luna-cli/issues",
   "devDependencies": {
     "@types/minimist": "1.2.2",
     "@types/node": "20.5.9",
