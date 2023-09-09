@@ -1,6 +1,6 @@
 {
   "name": "lun-cli",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "generator react component using cli",
   "main": "dist/index.mjs",
   "bin": {
@@ -11,7 +11,14 @@
     "build": "unbuild",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": [
+    "react",
+    "typescript",
+    "cac",
+    "react-ts",
+    "javascript",
+    "cli"
+  ],
   "author": {
     "name": "Juanestban"
   },

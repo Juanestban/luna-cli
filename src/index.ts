@@ -1,6 +1,5 @@
 import { cac } from 'cac';
 import fs from 'node:fs';
-// import minimist from 'minimist';
 import colors from 'picocolors';
 import path from 'node:path';
 
@@ -9,8 +8,6 @@ import { templateComponent, templateIndexComponent, templateCSS } from './templa
 import { updateIndex } from './utils/updateIndex';
 
 const cli = cac(APP_NAME);
-
-// const args = minimist(process.argv.slice(2));
 
 type Option = { t?: 'react' | 'react-ts'; template?: 'react' | 'react-ts' };
 
