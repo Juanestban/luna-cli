@@ -3,24 +3,22 @@ import fs from 'node:fs';
 import colors from 'picocolors';
 import path from 'node:path';
 
-import { APP_NAME, VERSION } from './constants';
+import { VERSION } from './constants';
 import { templateComponent, templateIndexComponent, templateCSS } from './templates/base';
 import { updateIndex } from './utils/updateIndex';
 
-const cli = cac(APP_NAME);
+const cli = cac('');
 
 type Option = { t?: 'react' | 'react-ts'; template?: 'react' | 'react-ts' };
 
 cli
-  .command('[root] [componentName]', 'command for generate component')
+  .command('[componentName]', 'command for generate component')
   .option(
     '-t, --template <template>',
     '[react | react-ts] > Can generate component using react with javascript or typescript',
   )
   .action(async (...options: any[]) => {
-    const [componentName, args] = options
-      .sort((a) => (typeof a !== 'function' ? 0 : 1))
-      .slice(1);
+    const [componentName, args] = options;
     const { t: type = 'react' } = (args ?? {}) as Option;
 
     if (!componentName || typeof componentName === 'object') {
