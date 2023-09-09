@@ -1,17 +1,16 @@
 {
   "name": "lun-cli",
-  "version": "0.2.2",
+  "version": "0.2.5",
   "description": "generator react component using cli",
   "main": "dist/index.cjs",
   "bin": {
-    "luna-cli": "bin/luna.js"
+    "lun-cli": "bin/luna.js"
   },
   "scripts": {
     "start": "node dist/index.mjs",
     "build": "unbuild",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "type": "module",
   "exports": {
     "import": "./dist/index.mjs",
     "require": "./dist/index.cjs",

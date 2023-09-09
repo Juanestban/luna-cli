@@ -7,7 +7,6 @@ export default defineBuildConfig({
   rollup: {
     inlineDependencies: true,
     emitCJS: true,
-    cjsBridge: true,
     esbuild: {
       target: 'node18',
       minify: true,

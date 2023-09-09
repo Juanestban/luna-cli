@@ -21,7 +21,12 @@ cli
     const [componentName, args] = options
       .sort((a) => (typeof a !== 'function' ? 0 : 1))
       .slice(1);
-    const { t: type = 'react' } = args as Option;
+    const { t: type = 'react' } = (args ?? {}) as Option;
+
+    if (!componentName || typeof componentName === 'object') {
+      console.log(colors.bgRed('[-] you need set name to the new Component'));
+      return;
+    }
 
     const fileComponent = templateComponent({
       component: componentName,
