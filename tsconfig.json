@@ -2,9 +2,9 @@
   "include": ["build.config.ts", "src"],
   "compilerOptions": {
     "outDir": "dist",
-    "target": "ES2022",
-    "module": "ES2020",
-    "moduleResolution": "Bundler",
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
     "strict": true,
     "skipLibCheck": true,
     "declaration": true,

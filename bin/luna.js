@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
-import { existsSync } from 'node:fs';
-import { bgRed, white } from 'picocolors';
+const { existsSync } = require('node:fs');
+const { bgRed, white } = require('picocolors');
 
 function start() {
-  const indexFile = '../dist/index.mjs';
+  const indexFile = '../dist/index.cjs';
   if (!existsSync(indexFile)) {
     console.log(
       bgRed(
@@ -16,7 +16,7 @@ function start() {
     return;
   }
 
-  return import(indexFile);
+  return require(indexFile);
 }
 
 start();

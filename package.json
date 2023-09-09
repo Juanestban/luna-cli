@@ -2,7 +2,7 @@
   "name": "lun-cli",
   "version": "0.2.1",
   "description": "generator react component using cli",
-  "main": "dist/index.mjs",
+  "main": "dist/index.cjs",
   "bin": {
     "luna-cli": "bin/luna.js"
   },
@@ -12,6 +12,11 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "type": "module",
+  "exports": {
+    "import": "./dist/index.mjs",
+    "require": "./dist/index.cjs",
+    "types": "./dist/index.d.ts"
+  },
   "keywords": [
     "react",
     "typescript",
