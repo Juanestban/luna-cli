@@ -1,21 +1,31 @@
 {
   "name": "lun-cli",
-  "version": "0.2.6",
+  "version": "1.0.0",
   "description": "generator react component using cli",
   "main": "dist/index.cjs",
   "bin": {
     "lun-cli": "bin/luna.js"
   },
   "scripts": {
-    "start": "node dist/index.mjs",
+    "start": "node bin/luna.js",
     "build": "unbuild",
+    "dev": "pnpm build && pnpm start",
+    "prepublish": "pnpm build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "exports": {
-    "import": "./dist/index.mjs",
-    "require": "./dist/index.cjs",
+    "import": "./dist/lunConfig.cjs",
+    "require": "./dist/lunConfig.cjs",
     "types": "./dist/index.d.ts"
   },
+  "files": [
+    "bin",
+    "dist",
+    "README.md",
+    "build.config.ts",
+    "package.json",
+    "tsconfig.json"
+  ],
   "keywords": [
     "react",
     "typescript",

@@ -5,20 +5,20 @@ const { bgRed, white } = require('picocolors');
 const path = require('node:path');
 
 function start() {
-  const indexFile = path.join(__dirname, '..', '/dist/index.cjs');
+  const cliFile = path.join(__dirname, '..', '/dist/cli.cjs');
 
-  if (!existsSync(indexFile)) {
+  if (!existsSync(cliFile)) {
     console.log(
       bgRed(
         `[-] ${white(
-          'Error, missing build the luna-cli for have dist folder with there index file',
+          'Error, missing build the luna-cli for have dist folder with there cli file - [dist/cli.ts]',
         )}`,
       ),
     );
     return;
   }
 
-  return require(indexFile);
+  return require(cliFile);
 }
 
 start();

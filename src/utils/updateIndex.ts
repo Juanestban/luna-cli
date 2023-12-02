@@ -1,9 +1,11 @@
 import fs from 'node:fs';
 
+import { Template } from '../models';
+
 interface UpdateIndexProps {
   path: string;
   newFile: string;
-  type: 'react' | 'react-ts';
+  type: Template;
 }
 
 export const updateIndex = ({ path, type, newFile }: UpdateIndexProps) => {

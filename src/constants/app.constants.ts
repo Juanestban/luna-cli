@@ -1,4 +1,4 @@
-import { version } from '../../package.json';
+import { name, version } from '../../package.json';
 
-export const APP_NAME = 'lun-cli';
+export const APP_NAME = name;
 export const VERSION = version;

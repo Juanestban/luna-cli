@@ -10,3 +10,6 @@ dist
 
 # components
 components
+
+# defineLunConfig
+lun.config.*
