@@ -1,8 +1,14 @@
-export const componentWithTsx = (componentName: string) => {
+import { Css } from '../models';
+
+export const componentWithTsx = (componentName: string, type: Css) => {
   return `import { FC, DetailedHTMLProps, HTMLAttributes, forwardRef } from 'react';
 import cn from 'classnames';
 
-import s from './${componentName}.module.css'
+${
+  type === 'module'
+    ? `import s from './${componentName}.module.css'`
+    : `import './${componentName}.css'`
+}
   
 interface ${componentName}Props extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   //

@@ -1,20 +1,27 @@
+import { Css, Template } from '../models';
 import { componentWithJs } from './componentWithJs';
 import { componentWithTsx } from './componentWithTsx';
 
 interface TemplateProps {
   component: string;
-  type: 'react' | 'react-ts';
+  type: Template;
+  cssType: Css;
 }
 
-export const templateComponent = ({ component, type }: TemplateProps) => {
-  return type === 'react' ? componentWithJs(component) : componentWithTsx(component);
+export const templateComponent = ({ component, type, cssType }: TemplateProps) => {
+  const fun = type === 'react' ? componentWithJs : componentWithTsx;
+
+  return fun(component, cssType);
 };
 
 export const templateCSS = `.container {
   border: 1px solid #09f;
 }`;
 
-export const templateIndexComponent = ({ component, type }: TemplateProps) => {
+export const templateIndexComponent = ({
+  component,
+  type,
+}: Omit<TemplateProps, 'cssType'>) => {
   if (type === 'react') {
     return `export { default as ${component} } from './${component}'
 `;

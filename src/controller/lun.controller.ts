@@ -5,7 +5,7 @@ import { getExt } from '../utils/getExt';
 import { defaultConfig } from '../constants';
 import { updateIndex } from '../utils/updateIndex';
 import { getRootPath } from '../utils/path';
-import type { PrintCreate, LunConfig, CreateComponent } from '../models';
+import type { PrintCreate, LunConfig, CreateComponent, Css } from '../models';
 import {
   templateCSS,
   templateComponent,
@@ -15,10 +15,12 @@ import {
 export class Lun {
   private options: LunConfig = defaultConfig;
   private dir: string = getRootPath(defaultConfig.root);
+  private cssType: Css = 'module';
 
   setOptions(value: LunConfig) {
     this.options = value;
     this.dir = getRootPath(this.options.root);
+    this.cssType = this.options.css;
   }
 
   private printCreate = ({ type, name }: PrintCreate) => {
@@ -47,6 +49,7 @@ export class Lun {
     const fileComponent = templateComponent({
       component: componentName,
       type: typeTemplate,
+      cssType: this.cssType,
     });
     const fileIndex = templateIndexComponent({
       component: componentName,
