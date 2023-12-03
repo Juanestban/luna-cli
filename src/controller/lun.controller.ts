@@ -4,7 +4,7 @@ import colors from 'picocolors';
 import { getExt } from '../utils/getExt';
 import { defaultConfig } from '../constants';
 import { updateIndex } from '../utils/updateIndex';
-import { getPath, getPathComponentsFolder } from '../utils/path';
+import { getRootPath } from '../utils/path';
 import type { PrintCreate, LunConfig, CreateComponent } from '../models';
 import {
   templateCSS,
@@ -14,9 +14,11 @@ import {
 
 export class Lun {
   private options: LunConfig = defaultConfig;
+  private dir: string = '';
 
   setOptions(value: LunConfig) {
     this.options = value;
+    this.dir = getRootPath(this.options.root);
   }
 
   private printCreate = ({ type, name }: PrintCreate) => {
@@ -26,6 +28,12 @@ export class Lun {
   private printMissing = ({ type }: Partial<PrintCreate>) => {
     console.log(colors.bgRed(`[-] you need set name to the new ${type}`));
   };
+
+  getFullPathComponent = (componentName: string, filename: string) =>
+    getRootPath(this.dir, `components/${componentName}/${filename}`);
+
+  getPathComponentsFolder = (folder: string = '') =>
+    getRootPath(this.dir, `components/${folder}`);
 
   createComponent({ componentName, type }: CreateComponent) {
     if (!componentName || typeof componentName === 'object') {
@@ -48,13 +56,13 @@ export class Lun {
     const filenameComponent = `${componentName}.${extComponent}`;
     const filenameIndex = `index.${extIndex}`;
     const filenameCss = `${componentName}.module.css`;
-    const pathComponent = getPath(componentName, filenameComponent);
-    const pathIndexComponent = getPath(componentName, filenameIndex);
-    const pathStyles = getPath(componentName, filenameCss);
+    const pathComponent = this.getFullPathComponent(componentName, filenameComponent);
+    const pathIndexComponent = this.getFullPathComponent(componentName, filenameIndex);
+    const pathStyles = this.getFullPathComponent(componentName, filenameCss);
 
-    const pathIndexFolderComponents = getPathComponentsFolder();
-    const folderComponent = getPathComponentsFolder(componentName);
-    const folderBaseComponent = getPathComponentsFolder();
+    const pathIndexFolderComponents = this.getPathComponentsFolder();
+    const folderComponent = this.getPathComponentsFolder(componentName);
+    const folderBaseComponent = this.getPathComponentsFolder();
 
     if (!fs.existsSync(folderBaseComponent)) fs.mkdirSync(folderBaseComponent);
     if (!fs.existsSync(folderComponent)) fs.mkdirSync(folderComponent);
