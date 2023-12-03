@@ -14,7 +14,7 @@ import {
 
 export class Lun {
   private options: LunConfig = defaultConfig;
-  private dir: string = '';
+  private dir: string = getRootPath(defaultConfig.root);
 
   setOptions(value: LunConfig) {
     this.options = value;
