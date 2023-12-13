@@ -1,2 +1,16 @@
-export { withJs } from './withJs';
-export { withTs } from './withTs';
+import { TemplateProps } from '../../models';
+
+import { withJs, indexWithJs } from './withJs';
+import { withTs, indexWithTs } from './withTs';
+
+export const getTemplatePage = ({ name, type }: TemplateProps) => {
+  const fn = type === 'react-ts' ? withTs : withJs;
+
+  return fn({ name });
+};
+
+export const getTemplateIndex = ({ name, type }: TemplateProps) => {
+  const fn = type === 'react-ts' ? indexWithTs : indexWithJs;
+
+  return fn({ name });
+};
