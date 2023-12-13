@@ -11,7 +11,7 @@
     "build": "unbuild",
     "dev": "pnpm build && pnpm start",
     "changeversion": "node ./scripts/changeversion.js",
-    "prepublish": "pnpm build",
+    "prepublish": "yarn build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "exports": {
