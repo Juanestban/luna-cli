@@ -8,3 +8,18 @@ export interface CreateComponent {
   componentName?: string;
   type?: Template;
 }
+
+export interface CreatePage {
+  pageName: string;
+  type?: Template;
+}
+
+export interface CreateContext {
+  contextName: string;
+  type?: Template;
+}
+
+export interface TemplateProps {
+  name: string;
+  type?: Template;
+}
