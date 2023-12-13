@@ -27,7 +27,19 @@ pnpm add lun-cli
 created component schema
 
 ```sh
-lun-cli <component-name>
+lun-cli gc <component-name>
+```
+
+create page/view schema
+
+```sh
+lun-cli gp <view-name>
+```
+
+create context/provider schema
+
+```sh
+lun-cli gctx <provider-name>
 ```
 
 ### help command
