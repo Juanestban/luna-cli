@@ -13,7 +13,6 @@ export const getOptions = () => {
     if (searchingFile.some((cond) => typeof cond === 'string')) {
       const configPath = searchingFile.find((cond) => typeof cond === 'string') as string;
       const options = require(configPath) as LunConfig;
-      console.log(options);
 
       resolve(options);
     } else resolve(defaultConfig);
