@@ -1,6 +1,6 @@
 {
   "name": "lun-cli",
-  "version": "2.4.2",
+  "version": "2.4.3",
   "description": "generator react component using cli",
   "main": "dist/index.cjs",
   "bin": {
