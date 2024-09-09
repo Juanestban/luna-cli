@@ -79,5 +79,6 @@ module.exports = defineLunConfig({
   defaultTemplate: 'react-ts',
   provider: 'context',
   css: 'module',
+  className: 'clsx'
 });
 ```
