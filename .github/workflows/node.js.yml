@@ -19,11 +19,15 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-      - uses: actions/checkout@v4
       - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+
+      - name: Install Node.js
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'npm'
-      - run: npm ci --legacy-peer-deps --no-fund --no-audit
-      - run: npm build
+          cache: 'pnpm'
+
+      - run: pnpm ci --frozen-lockfile --strict-peer-dependencies  --no-optional
+      - run: pnpm run build
