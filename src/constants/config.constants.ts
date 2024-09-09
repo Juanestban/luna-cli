@@ -6,6 +6,7 @@ export const defaultConfig: LunConfig = {
   defaultTemplate: 'react',
   provider: 'context',
   css: 'module',
+  className: 'clsx',
 };
 
-export const extsConfigFile = ['js', 'cjs'];
+export const extsConfigFile = ['js', 'cjs', 'mjs'];

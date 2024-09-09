@@ -11,7 +11,5 @@ export const withJs = ({ name }: Props) => {
 `;
 };
 
-export const indexWithJs = ({
-  name,
-}: Props) => `export { default as ${name} } from './${name}';
+export const indexWithJs = ({ name }: Props) => `export { default as ${name} } from './${name}';
 `;

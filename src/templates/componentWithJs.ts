@@ -1,8 +1,8 @@
-import { Css } from '../models';
+import { ClassName, Css } from '../models';
 
-export const componentWithJs = (componentName: string, type: Css) => {
+export const componentWithJs = (componentName: string, type: Css, className: ClassName) => {
   return `import { forwardRef } from 'react'
-import cn from 'classnames'
+import cn from '${className}'
 
 ${
   type === 'module'

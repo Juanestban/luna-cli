@@ -1,4 +1,4 @@
-import { Css, Template } from '../models';
+import { ClassName, Css, Template } from '../models';
 import { componentWithJs } from './componentWithJs';
 import { componentWithTsx } from './componentWithTsx';
 
@@ -6,12 +6,13 @@ interface TemplateProps {
   component: string;
   type: Template;
   cssType: Css;
+  className: ClassName;
 }
 
-export const templateComponent = ({ component, type, cssType }: TemplateProps) => {
+export const templateComponent = ({ component, type, cssType, className }: TemplateProps) => {
   const fun = type === 'react' ? componentWithJs : componentWithTsx;
 
-  return fun(component, cssType);
+  return fun(component, cssType, className);
 };
 
 export const templateCSS = `.container {
@@ -21,7 +22,7 @@ export const templateCSS = `.container {
 export const templateIndexComponent = ({
   component,
   type,
-}: Omit<TemplateProps, 'cssType'>) => {
+}: Omit<TemplateProps, 'cssType' | 'className'>) => {
   if (type === 'react') {
     return `export { default as ${component} } from './${component}'
 `;

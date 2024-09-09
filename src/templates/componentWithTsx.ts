@@ -1,29 +1,27 @@
-import { Css } from '../models';
+import { ClassName, Css } from '../models';
 
-export const componentWithTsx = (componentName: string, type: Css) => {
-  return `import { FC, DetailedHTMLProps, HTMLAttributes, forwardRef } from 'react';
-import cn from 'classnames';
+export const componentWithTsx = (componentName: string, type: Css, className: ClassName) => {
+  return `import { FC, ComponentProps, forwardRef } from 'react';
+import ${className} from '${className}';
 
-${
-  type === 'module'
-    ? `import s from './${componentName}.module.css'`
-    : `import './${componentName}.css'`
+import ${type === 'module' ? `s from './${componentName}.module.css'` : `'./${componentName}.css'`}
+
+type PrimitiveProps = Omit<ComponentProps<'div'>, 'ref'>
+
+interface ${componentName}Props extends PrimitiveProps {
+  // your props
 }
-  
-interface ${componentName}Props extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-  //
-}
-  
+
 const ${componentName} = forwardRef<HTMLDivElement, ${componentName}Props>(
   ({ className, children, ...props }, ref) => {
     return (
-      <div ref={ref} className={cn(s.container, className)} {...props}>
+      <div ref={ref} className={${className}(s.container, className)} {...props}>
         {children}
       </div>
     );
   }
 ) as FC<${componentName}Props>;
-  
+
 export default ${componentName};
 export type { ${componentName}Props }
 

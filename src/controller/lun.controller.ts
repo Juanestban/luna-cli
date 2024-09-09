@@ -13,27 +13,19 @@ import type {
   Css,
   CreatePage,
   CreateContext,
+  ClassName,
 } from '../models';
-import {
-  templateCSS,
-  templateComponent,
-  templateIndexComponent,
-} from '../templates/base';
+import { templateCSS, templateComponent, templateIndexComponent } from '../templates/base';
 import { getTemplateIndex, getTemplatePage } from '../templates/pages';
 import { getTemplateContext } from '../templates/contexts';
 
 export class Lun {
   private options: LunConfig = defaultConfig;
   private dir: string = getRootPath(defaultConfig.root);
-  private dirFolderPage: string = getRootPath(
-    defaultConfig.root,
-    defaultConfig.pagesFolder,
-  );
-  private dirFolderContext: string = getRootPath(
-    defaultConfig.root,
-    defaultConfig.provider,
-  );
+  private dirFolderPage: string = getRootPath(defaultConfig.root, defaultConfig.pagesFolder);
+  private dirFolderContext: string = getRootPath(defaultConfig.root, defaultConfig.provider);
   private cssType: Css = 'module';
+  private className: ClassName = 'clsx';
 
   setOptions(value: LunConfig) {
     this.options = value;
@@ -41,6 +33,7 @@ export class Lun {
     this.dirFolderPage = getRootPath(this.options.root, this.options.pagesFolder);
     this.dirFolderContext = getRootPath(this.options.root, this.options.provider);
     this.cssType = this.options.css;
+    this.className = this.options.className;
   }
 
   private printCreate = ({ type, name }: PrintCreate) => {
@@ -54,8 +47,7 @@ export class Lun {
   getFullPathComponent = (componentName: string, filename: string) =>
     getRootPath(this.dir, `components/${componentName}/${filename}`);
 
-  getPathComponentsFolder = (folder: string = '') =>
-    getRootPath(this.dir, `components/${folder}`);
+  getPathComponentsFolder = (folder: string = '') => getRootPath(this.dir, `components/${folder}`);
 
   createComponent({ componentName, type }: CreateComponent) {
     if (!componentName || typeof componentName === 'object') {
@@ -70,6 +62,7 @@ export class Lun {
       component: componentName,
       type: typeTemplate,
       cssType: this.cssType,
+      className: this.className,
     });
     const fileIndex = templateIndexComponent({
       component: componentName,
@@ -113,14 +106,8 @@ export class Lun {
     const { extIndex, extComponent } = getExt(typeTemplate);
     const folderPath = this.dirFolderContext;
     const folderContextComponent = path.resolve(folderPath, contextName);
-    const templateContext = path.resolve(
-      folderContextComponent,
-      `${contextName}.${extComponent}`,
-    );
-    const templateIndexContext = path.resolve(
-      folderContextComponent,
-      `index.${extIndex}`,
-    );
+    const templateContext = path.resolve(folderContextComponent, `${contextName}.${extComponent}`);
+    const templateIndexContext = path.resolve(folderContextComponent, `index.${extIndex}`);
 
     if (!fs.existsSync(folderPath)) fs.mkdirSync(folderPath);
     if (!fs.existsSync(folderContextComponent)) fs.mkdirSync(folderContextComponent);
@@ -154,14 +141,8 @@ export class Lun {
     if (!fs.existsSync(folderPath)) fs.mkdirSync(folderPath);
     if (!fs.existsSync(folderPageComponent)) fs.mkdirSync(folderPageComponent);
 
-    fs.writeFileSync(
-      templatePage,
-      getTemplatePage({ name: pageName, type: typeTemplate }),
-    );
-    fs.writeFileSync(
-      templateIndexPage,
-      getTemplateIndex({ name: pageName, type: typeTemplate }),
-    );
+    fs.writeFileSync(templatePage, getTemplatePage({ name: pageName, type: typeTemplate }));
+    fs.writeFileSync(templateIndexPage, getTemplateIndex({ name: pageName, type: typeTemplate }));
 
     this.printCreate({ type: 'page', name: pageName });
   }
