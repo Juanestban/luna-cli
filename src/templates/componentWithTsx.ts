@@ -1,8 +1,8 @@
 import { Css } from '../models';
 
 export const componentWithTsx = (componentName: string, type: Css) => {
-  return `import { FC, DetailedHTMLProps, HTMLAttributes, forwardRef } from 'react';
-import cn from 'classnames';
+  return `import type { FC, ComponentProps } from 'react';
+import cn from 'clsx';
 
 ${
   type === 'module'
@@ -10,22 +10,19 @@ ${
     : `import './${componentName}.css'`
 }
   
-interface ${componentName}Props extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+interface ${componentName}Props extends ComponentProps<'div'> {
   //
 }
   
-const ${componentName} = forwardRef<HTMLDivElement, ${componentName}Props>(
-  ({ className, children, ...props }, ref) => {
-    return (
-      <div ref={ref} className={cn(s.container, className)} {...props}>
-        {children}
-      </div>
-    );
-  }
-) as FC<${componentName}Props>;
+const ${componentName}: FC<${componentName}Props> = ({ ref, className, children, ...props }) => {
+  return (
+    <div ref={ref} className={cn(s.container, className)} {...props}>
+      {children}
+    </div>
+  );
+};
   
 export default ${componentName};
-export type { ${componentName}Props }
-
+export type { ${componentName}Props };
 `;
 };

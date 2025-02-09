@@ -20,7 +20,7 @@ import {
   templateIndexComponent,
 } from '../templates/base';
 import { getTemplateIndex, getTemplatePage } from '../templates/pages';
-import { getTemplateContext } from '../templates/contexts';
+import { getTemplateContext, getTemplateIndexContext } from '../templates/contexts';
 
 export class Lun {
   private options: LunConfig = defaultConfig;
@@ -131,7 +131,7 @@ export class Lun {
     );
     fs.writeFileSync(
       templateIndexContext,
-      getTemplateIndex({ name: contextName, type: typeTemplate }),
+      getTemplateIndexContext({ name: contextName, type: typeTemplate }),
     );
 
     this.printCreate({ type: 'context', name: contextName });

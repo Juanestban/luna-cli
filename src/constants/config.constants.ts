@@ -8,4 +8,4 @@ export const defaultConfig: LunConfig = {
   css: 'module',
 };
 
-export const extsConfigFile = ['js', 'cjs'];
+export const extsConfigFile = ['cjs', 'mjs'];

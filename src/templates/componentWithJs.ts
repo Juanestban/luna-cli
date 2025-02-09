@@ -2,7 +2,7 @@ import { Css } from '../models';
 
 export const componentWithJs = (componentName: string, type: Css) => {
   return `import { forwardRef } from 'react'
-import cn from 'classnames'
+import cn from 'clsx'
 
 ${
   type === 'module'

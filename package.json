@@ -1,6 +1,6 @@
 {
   "name": "lun-cli",
-  "version": "2.4.3",
+  "version": "3.0.0",
   "description": "generator react component using cli",
   "main": "dist/index.cjs",
   "bin": {
@@ -11,11 +11,10 @@
     "build": "unbuild",
     "dev": "pnpm build && pnpm start",
     "changeversion": "node ./scripts/changeversion.js",
-    "prepublish": "yarn build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepublish": "pnpm build"
   },
   "exports": {
-    "import": "./dist/lunConfig.cjs",
+    "import": "./dist/lunConfig.mjs",
     "require": "./dist/lunConfig.cjs",
     "types": "./dist/index.d.ts"
   },
@@ -48,7 +47,7 @@
   "bugs": "https://github.com/Juanestban/luna-cli/issues",
   "devDependencies": {
     "@types/minimist": "1.2.2",
-    "@types/node": "20.5.9",
+    "@types/node": "22.13.1",
     "@typescript-eslint/eslint-plugin": "^6.6.0",
     "@typescript-eslint/parser": "6.6.0",
     "eslint": "^8.0.1",
