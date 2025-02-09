@@ -45,6 +45,10 @@
     "picocolors": "1.0.0"
   },
   "bugs": "https://github.com/Juanestban/luna-cli/issues",
+  "peerDependencies": {
+    "react": "19.0.0",
+    "react-dom": "19.0.0"
+  },
   "devDependencies": {
     "@types/minimist": "1.2.2",
     "@types/node": "22.13.1",
