@@ -11,7 +11,5 @@ export const withTs = ({ name }: Props) => {
 `;
 };
 
-export const indexWithTs = ({
-  name,
-}: Props) => `export { default as ${name} } from './${name}';
+export const indexWithTs = ({ name }: Props) => `export { default as ${name} } from './${name}';
 `;

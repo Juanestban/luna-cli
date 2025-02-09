@@ -4,6 +4,8 @@ export type Css = 'vanilla' | 'module';
 
 export type PagesFolderName = 'views' | 'pages';
 
+export type ClassName = 'clsx' | 'classNames';
+
 export interface LunConfig {
   /** by default [src] - options: 'src' | 'app' | string */
   root: string;
@@ -15,4 +17,5 @@ export interface LunConfig {
   provider: string;
   /** css - vanilla or module */
   css: Css;
+  className: ClassName;
 }

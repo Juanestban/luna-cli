@@ -4,10 +4,12 @@ export const componentWithTsx = (componentName: string, type: Css) => {
   return `import type { FC, ComponentProps } from 'react';
 import cn from 'clsx';
 
-${
-  type === 'module'
-    ? `import s from './${componentName}.module.css'`
-    : `import './${componentName}.css'`
+import ${type === 'module' ? `s from './${componentName}.module.css'` : `'./${componentName}.css'`}
+
+type PrimitiveProps = Omit<ComponentProps<'div'>, 'ref'>
+
+interface ${componentName}Props extends PrimitiveProps {
+  // your props
 }
   
 interface ${componentName}Props extends ComponentProps<'div'> {
