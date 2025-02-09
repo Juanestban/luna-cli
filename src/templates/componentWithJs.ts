@@ -2,7 +2,7 @@ import { ClassName, Css } from '../models';
 
 export const componentWithJs = (componentName: string, type: Css, className: ClassName) => {
   return `import { forwardRef } from 'react'
-import cn from '${className}'
+import cn from 'clsx'
 
 ${
   type === 'module'
@@ -19,6 +19,5 @@ const ${componentName} = forwardRef(({ className, chilren, ...props }, ref) => {
 })
   
 export default ${componentName}
-
 `;
 };

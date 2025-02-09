@@ -9,4 +9,4 @@ export const defaultConfig: LunConfig = {
   className: 'clsx',
 };
 
-export const extsConfigFile = ['js', 'cjs', 'mjs'];
+export const extsConfigFile = ['cjs', 'mjs'];

@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+'use strict';
 
 const { existsSync } = require('node:fs');
 const { bgRed, white } = require('picocolors');
